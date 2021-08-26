@@ -1,16 +1,24 @@
 import styled from "styled-components";
 import { ajustaPreco } from "../../utils/utils";
+import { Mensagem } from "../Mensagem";
+
+const PrecoEstilizado = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-weight: bold;
+  font-size: 20px;
+`;
 
 const PrecoContainer = styled.div`
+  padding: 30px 10px;
   width: 95%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 10px;
-  margin: 0;
-  font-weight: bold;
-  font-size: 20px;
 `;
 
 interface PrecoProps {
@@ -20,9 +28,14 @@ interface PrecoProps {
 export function Preco(props: PrecoProps) {
   const preco_total = ajustaPreco(props.valor_preco);
   return (
-    <PrecoContainer>
-      <span>Total</span>
-      <span>{`R$ ${preco_total}`}</span>
-    </PrecoContainer>
+    <PrecoEstilizado>
+      <PrecoContainer>
+        <span>Total</span>
+        <span>{`R$ ${preco_total}`}</span>
+      </PrecoContainer>
+      {(props.valor_preco >= 10) && (
+        <Mensagem />
+      )}
+    </PrecoEstilizado>
   );
 }

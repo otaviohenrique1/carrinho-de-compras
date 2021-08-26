@@ -25,7 +25,7 @@ export function Compras() {
         <Separador />
         <ListaProdutos />
         <Separador />
-        <Preco valor_preco={9.55} />
+        <Preco valor_preco={19.55} />
         <Separador />
         <ContainerBotoes />
       </Produtos>
