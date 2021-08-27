@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import trufa from "../../assets/trufa.jpg";
 import { ajustaPreco } from "../../utils/utils";
 
 const ItemEstilizado = styled.li`
@@ -36,14 +35,22 @@ const ItemDadosContainer = styled.div`
   }
 `;
 
-export function Item() {
+export interface ItemProps {
+  name: string;
+  price: number;
+  sellingPrice: number;
+  imageUrl: string;
+  detailUrl: string;
+}
+
+export function Item(props: ItemProps) {
   return (
     <ItemEstilizado>
-      <Imagem src={trufa} alt="Trufa" />
+      <Imagem src={props.imageUrl} alt={props.detailUrl} />
       <ItemDadosContainer>
-        <span>Trufa de morango</span>
-        <span>{`R$ ${ajustaPreco(1.23)}`}</span>
-        <span>{`R$ ${ajustaPreco(1.11)}`}</span>
+        <span>{props.name}</span>
+        <span>{`R$ ${ajustaPreco(props.price)}`}</span>
+        <span>{`R$ ${ajustaPreco(props.sellingPrice)}`}</span>
       </ItemDadosContainer>
     </ItemEstilizado>
   );

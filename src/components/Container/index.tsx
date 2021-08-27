@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import styled from "styled-components";
 
 const ContainerEstilizado = styled.div`
@@ -10,13 +10,13 @@ const ContainerEstilizado = styled.div`
   padding: 50px 0;
 `;
 
-interface ContainerProps {
+interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
 export function Container(props: ContainerProps) {
   return (
-    <ContainerEstilizado>
+    <ContainerEstilizado {...props}>
       {props.children}
     </ContainerEstilizado>
   );

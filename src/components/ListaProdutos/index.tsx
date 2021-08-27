@@ -1,5 +1,5 @@
+import { ReactNode } from "react";
 import styled from "styled-components";
-import { Item } from "../Item";
 
 const ListaProdutosEstilizada = styled.ul`
   width: 100%;
@@ -8,13 +8,14 @@ const ListaProdutosEstilizada = styled.ul`
   margin: 20px 10px;
 `;
 
-export function ListaProdutos() {
+interface ListaProdutosProps {
+  children: ReactNode;
+}
+
+export function ListaProdutos(props: ListaProdutosProps) {
   return (
     <ListaProdutosEstilizada>
-      <Item />
-      <Item />
-      <Item />
-      <Item />
+      {props.children}
     </ListaProdutosEstilizada>
   );
 }

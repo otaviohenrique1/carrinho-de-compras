@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 interface BotaoProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -26,11 +27,12 @@ export function Botao(props: BotaoProps) {
   );
 }
 
-export function ContainerBotoes() {
+export function ContainerBotoes(props: BotaoProps) {
   return (
     <ContainerBotoesEstilizado>
       <Botao
-        label_button="Finalizar compra"
+        {...props}
+        label_button={props.label_button}
       />
     </ContainerBotoesEstilizado>
   );
@@ -41,3 +43,30 @@ const ContainerBotoesEstilizado = styled.div`
   text-align: center;
   margin: 0;
 `;
+
+const BotaoLinkEstilizado = styled(Link)`
+  text-decoration: none;
+  width: 100%;
+
+  button {
+    width: 100%;
+    background-color: royalblue;
+    color: white;
+    padding: 15px;
+    font-size: 25px;
+    border-radius: 10px;
+  }
+`;
+
+interface BotaoLinkProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  to: any;
+  label_button: string;
+}
+
+export function BotaoLink(props: BotaoLinkProps) {
+  return (
+    <BotaoLinkEstilizado to={props.to}>
+      <button {...props} className="botao">{props.label_button}</button>
+    </BotaoLinkEstilizado>
+  );
+}
